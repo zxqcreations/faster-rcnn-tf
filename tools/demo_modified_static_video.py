@@ -66,7 +66,8 @@ import PIL
 #           'motorbike', 'person', 'pottedplant',
 #           'sheep', 'sofa', 'train', 'tvmonitor')
 
-CLASSES = ('__background__', 'lion', 'monkey', 'panda', 'car', 'person', 'motorbike', 'bicycle')
+#CLASSES = ('__background__', 'lion', 'monkey', 'panda', 'car', 'person', 'motorbike', 'bicycle')
+CLASSES = ('__background__', 'car', 'person', 'motorbike', 'bycicle')
 
 NETS = {'vgg16': ('vgg16_faster_rcnn_iter_60.ckpt',), 'res101': ('res101_faster_rcnn_iter_110000.ckpt',)}
 DATASETS = {'pascal_voc': ('voc_2007_trainval',), 'pascal_voc_0712': ('voc_2007_trainval+voc_2012_trainval',)}
@@ -236,7 +237,7 @@ if __name__ == '__main__':
         net = resnetv1(num_layers=101)
     else:
         raise NotImplementedError
-    net.create_architecture("TEST", 8,
+    net.create_architecture("TEST", 5,
                             tag='default', anchor_scales=[8, 16, 32])
     saver = tf.train.Saver()
     #saver = tf.train.import_meta_graph(tfmodel + '.meta')
