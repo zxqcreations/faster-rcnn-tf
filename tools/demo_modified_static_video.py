@@ -67,7 +67,7 @@ import PIL
 #           'sheep', 'sofa', 'train', 'tvmonitor')
 
 #CLASSES = ('__background__', 'lion', 'monkey', 'panda', 'car', 'person', 'motorbike', 'bicycle')
-CLASSES = ('__background__', 'car', 'person', 'motorbike', 'bycicle')
+CLASSES = ('__background__', 'car', 'person', 'motorbike', 'bicycle')
 
 NETS = {'vgg16': ('vgg16_faster_rcnn_iter_60.ckpt',), 'res101': ('res101_faster_rcnn_iter_110000.ckpt',)}
 DATASETS = {'pascal_voc': ('voc_2007_trainval',), 'pascal_voc_0712': ('voc_2007_trainval+voc_2012_trainval',)}
