@@ -1,0 +1,9595 @@
+node {
+  name: "input"
+  op: "Placeholder"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 1
+        }
+        dim {
+          size: 600
+        }
+        dim {
+          size: 712
+        }
+        dim {
+          size: 3
+        }
+      }
+    }
+  }
+}
+node {
+  name: "Const"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\000\000\026D\000\0002DUU\005@"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/weights/Initializer/random_uniform/shape"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv1/conv1_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\003\000\000\000\003\000\000\000\003\000\000\000 \000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/weights/Initializer/random_uniform/min"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv1/conv1_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: -0.1380131095647812
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/weights/Initializer/random_uniform/max"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv1/conv1_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.1380131095647812
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/weights/Initializer/random_uniform/RandomUniform"
+  op: "RandomUniform"
+  input: "vgg_16/conv1/conv1_1/weights/Initializer/random_uniform/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv1/conv1_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "seed"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "seed2"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/weights/Initializer/random_uniform/sub"
+  op: "Sub"
+  input: "vgg_16/conv1/conv1_1/weights/Initializer/random_uniform/max"
+  input: "vgg_16/conv1/conv1_1/weights/Initializer/random_uniform/min"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv1/conv1_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/weights/Initializer/random_uniform/mul"
+  op: "Mul"
+  input: "vgg_16/conv1/conv1_1/weights/Initializer/random_uniform/RandomUniform"
+  input: "vgg_16/conv1/conv1_1/weights/Initializer/random_uniform/sub"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv1/conv1_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/weights/Initializer/random_uniform"
+  op: "Add"
+  input: "vgg_16/conv1/conv1_1/weights/Initializer/random_uniform/mul"
+  input: "vgg_16/conv1/conv1_1/weights/Initializer/random_uniform/min"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv1/conv1_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/weights"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv1/conv1_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 3
+        }
+        dim {
+          size: 3
+        }
+        dim {
+          size: 3
+        }
+        dim {
+          size: 32
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/weights/Assign"
+  op: "Assign"
+  input: "vgg_16/conv1/conv1_1/weights"
+  input: "vgg_16/conv1/conv1_1/weights/Initializer/random_uniform"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv1/conv1_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/weights/read"
+  op: "Identity"
+  input: "vgg_16/conv1/conv1_1/weights"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv1/conv1_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/kernel/Regularizer/l2_regularizer/scale"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv1/conv1_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 9.999999747378752e-05
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/kernel/Regularizer/l2_regularizer/L2Loss"
+  op: "L2Loss"
+  input: "vgg_16/conv1/conv1_1/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv1/conv1_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/kernel/Regularizer/l2_regularizer"
+  op: "Mul"
+  input: "vgg_16/conv1/conv1_1/kernel/Regularizer/l2_regularizer/scale"
+  input: "vgg_16/conv1/conv1_1/kernel/Regularizer/l2_regularizer/L2Loss"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv1/conv1_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/biases/Initializer/Const"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv1/conv1_1/biases"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 32
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/biases"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv1/conv1_1/biases"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 32
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/biases/Assign"
+  op: "Assign"
+  input: "vgg_16/conv1/conv1_1/biases"
+  input: "vgg_16/conv1/conv1_1/biases/Initializer/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv1/conv1_1/biases"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/biases/read"
+  op: "Identity"
+  input: "vgg_16/conv1/conv1_1/biases"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv1/conv1_1/biases"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/dilation_rate"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\001\000\000\000\001\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/Conv2D"
+  op: "Conv2D"
+  input: "input"
+  input: "vgg_16/conv1/conv1_1/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "SAME"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "use_cudnn_on_gpu"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/BiasAdd"
+  op: "BiasAdd"
+  input: "vgg_16/conv1/conv1_1/Conv2D"
+  input: "vgg_16/conv1/conv1_1/biases/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "vgg_16/conv1/conv1_1/Relu"
+  op: "Relu"
+  input: "vgg_16/conv1/conv1_1/BiasAdd"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16/pool1/MaxPool"
+  op: "MaxPool"
+  input: "vgg_16/conv1/conv1_1/Relu"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "ksize"
+    value {
+      list {
+        i: 1
+        i: 2
+        i: 2
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "SAME"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 2
+        i: 2
+        i: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/weights/Initializer/random_uniform/shape"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv2/conv2_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\003\000\000\000\003\000\000\000 \000\000\000@\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/weights/Initializer/random_uniform/min"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv2/conv2_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: -0.0833333358168602
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/weights/Initializer/random_uniform/max"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv2/conv2_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0833333358168602
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/weights/Initializer/random_uniform/RandomUniform"
+  op: "RandomUniform"
+  input: "vgg_16/conv2/conv2_1/weights/Initializer/random_uniform/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv2/conv2_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "seed"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "seed2"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/weights/Initializer/random_uniform/sub"
+  op: "Sub"
+  input: "vgg_16/conv2/conv2_1/weights/Initializer/random_uniform/max"
+  input: "vgg_16/conv2/conv2_1/weights/Initializer/random_uniform/min"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv2/conv2_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/weights/Initializer/random_uniform/mul"
+  op: "Mul"
+  input: "vgg_16/conv2/conv2_1/weights/Initializer/random_uniform/RandomUniform"
+  input: "vgg_16/conv2/conv2_1/weights/Initializer/random_uniform/sub"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv2/conv2_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/weights/Initializer/random_uniform"
+  op: "Add"
+  input: "vgg_16/conv2/conv2_1/weights/Initializer/random_uniform/mul"
+  input: "vgg_16/conv2/conv2_1/weights/Initializer/random_uniform/min"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv2/conv2_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/weights"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv2/conv2_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 3
+        }
+        dim {
+          size: 3
+        }
+        dim {
+          size: 32
+        }
+        dim {
+          size: 64
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/weights/Assign"
+  op: "Assign"
+  input: "vgg_16/conv2/conv2_1/weights"
+  input: "vgg_16/conv2/conv2_1/weights/Initializer/random_uniform"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv2/conv2_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/weights/read"
+  op: "Identity"
+  input: "vgg_16/conv2/conv2_1/weights"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv2/conv2_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/kernel/Regularizer/l2_regularizer/scale"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv2/conv2_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 9.999999747378752e-05
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/kernel/Regularizer/l2_regularizer/L2Loss"
+  op: "L2Loss"
+  input: "vgg_16/conv2/conv2_1/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv2/conv2_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/kernel/Regularizer/l2_regularizer"
+  op: "Mul"
+  input: "vgg_16/conv2/conv2_1/kernel/Regularizer/l2_regularizer/scale"
+  input: "vgg_16/conv2/conv2_1/kernel/Regularizer/l2_regularizer/L2Loss"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv2/conv2_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/biases/Initializer/Const"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv2/conv2_1/biases"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 64
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/biases"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv2/conv2_1/biases"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 64
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/biases/Assign"
+  op: "Assign"
+  input: "vgg_16/conv2/conv2_1/biases"
+  input: "vgg_16/conv2/conv2_1/biases/Initializer/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv2/conv2_1/biases"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/biases/read"
+  op: "Identity"
+  input: "vgg_16/conv2/conv2_1/biases"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv2/conv2_1/biases"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/dilation_rate"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\001\000\000\000\001\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/Conv2D"
+  op: "Conv2D"
+  input: "vgg_16/pool1/MaxPool"
+  input: "vgg_16/conv2/conv2_1/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "SAME"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "use_cudnn_on_gpu"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/BiasAdd"
+  op: "BiasAdd"
+  input: "vgg_16/conv2/conv2_1/Conv2D"
+  input: "vgg_16/conv2/conv2_1/biases/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "vgg_16/conv2/conv2_1/Relu"
+  op: "Relu"
+  input: "vgg_16/conv2/conv2_1/BiasAdd"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16/pool2/MaxPool"
+  op: "MaxPool"
+  input: "vgg_16/conv2/conv2_1/Relu"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "ksize"
+    value {
+      list {
+        i: 1
+        i: 2
+        i: 2
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "SAME"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 2
+        i: 2
+        i: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/weights/Initializer/random_uniform/shape"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv3/conv3_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\003\000\000\000\003\000\000\000@\000\000\000@\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/weights/Initializer/random_uniform/min"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv3/conv3_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: -0.07216878235340118
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/weights/Initializer/random_uniform/max"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv3/conv3_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.07216878235340118
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/weights/Initializer/random_uniform/RandomUniform"
+  op: "RandomUniform"
+  input: "vgg_16/conv3/conv3_1/weights/Initializer/random_uniform/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv3/conv3_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "seed"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "seed2"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/weights/Initializer/random_uniform/sub"
+  op: "Sub"
+  input: "vgg_16/conv3/conv3_1/weights/Initializer/random_uniform/max"
+  input: "vgg_16/conv3/conv3_1/weights/Initializer/random_uniform/min"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv3/conv3_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/weights/Initializer/random_uniform/mul"
+  op: "Mul"
+  input: "vgg_16/conv3/conv3_1/weights/Initializer/random_uniform/RandomUniform"
+  input: "vgg_16/conv3/conv3_1/weights/Initializer/random_uniform/sub"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv3/conv3_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/weights/Initializer/random_uniform"
+  op: "Add"
+  input: "vgg_16/conv3/conv3_1/weights/Initializer/random_uniform/mul"
+  input: "vgg_16/conv3/conv3_1/weights/Initializer/random_uniform/min"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv3/conv3_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/weights"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv3/conv3_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 3
+        }
+        dim {
+          size: 3
+        }
+        dim {
+          size: 64
+        }
+        dim {
+          size: 64
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/weights/Assign"
+  op: "Assign"
+  input: "vgg_16/conv3/conv3_1/weights"
+  input: "vgg_16/conv3/conv3_1/weights/Initializer/random_uniform"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv3/conv3_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/weights/read"
+  op: "Identity"
+  input: "vgg_16/conv3/conv3_1/weights"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv3/conv3_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/kernel/Regularizer/l2_regularizer/scale"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv3/conv3_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 9.999999747378752e-05
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/kernel/Regularizer/l2_regularizer/L2Loss"
+  op: "L2Loss"
+  input: "vgg_16/conv3/conv3_1/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv3/conv3_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/kernel/Regularizer/l2_regularizer"
+  op: "Mul"
+  input: "vgg_16/conv3/conv3_1/kernel/Regularizer/l2_regularizer/scale"
+  input: "vgg_16/conv3/conv3_1/kernel/Regularizer/l2_regularizer/L2Loss"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv3/conv3_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/biases/Initializer/Const"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv3/conv3_1/biases"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 64
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/biases"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv3/conv3_1/biases"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 64
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/biases/Assign"
+  op: "Assign"
+  input: "vgg_16/conv3/conv3_1/biases"
+  input: "vgg_16/conv3/conv3_1/biases/Initializer/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv3/conv3_1/biases"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/biases/read"
+  op: "Identity"
+  input: "vgg_16/conv3/conv3_1/biases"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv3/conv3_1/biases"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/dilation_rate"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\001\000\000\000\001\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/Conv2D"
+  op: "Conv2D"
+  input: "vgg_16/pool2/MaxPool"
+  input: "vgg_16/conv3/conv3_1/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "SAME"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "use_cudnn_on_gpu"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/BiasAdd"
+  op: "BiasAdd"
+  input: "vgg_16/conv3/conv3_1/Conv2D"
+  input: "vgg_16/conv3/conv3_1/biases/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "vgg_16/conv3/conv3_1/Relu"
+  op: "Relu"
+  input: "vgg_16/conv3/conv3_1/BiasAdd"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16/pool3/MaxPool"
+  op: "MaxPool"
+  input: "vgg_16/conv3/conv3_1/Relu"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "ksize"
+    value {
+      list {
+        i: 1
+        i: 2
+        i: 2
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "SAME"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 2
+        i: 2
+        i: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/weights/Initializer/random_uniform/shape"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv4/conv4_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\003\000\000\000\003\000\000\000@\000\000\000\200\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/weights/Initializer/random_uniform/min"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv4/conv4_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: -0.0589255653321743
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/weights/Initializer/random_uniform/max"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv4/conv4_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0589255653321743
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/weights/Initializer/random_uniform/RandomUniform"
+  op: "RandomUniform"
+  input: "vgg_16/conv4/conv4_1/weights/Initializer/random_uniform/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv4/conv4_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "seed"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "seed2"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/weights/Initializer/random_uniform/sub"
+  op: "Sub"
+  input: "vgg_16/conv4/conv4_1/weights/Initializer/random_uniform/max"
+  input: "vgg_16/conv4/conv4_1/weights/Initializer/random_uniform/min"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv4/conv4_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/weights/Initializer/random_uniform/mul"
+  op: "Mul"
+  input: "vgg_16/conv4/conv4_1/weights/Initializer/random_uniform/RandomUniform"
+  input: "vgg_16/conv4/conv4_1/weights/Initializer/random_uniform/sub"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv4/conv4_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/weights/Initializer/random_uniform"
+  op: "Add"
+  input: "vgg_16/conv4/conv4_1/weights/Initializer/random_uniform/mul"
+  input: "vgg_16/conv4/conv4_1/weights/Initializer/random_uniform/min"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv4/conv4_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/weights"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv4/conv4_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 3
+        }
+        dim {
+          size: 3
+        }
+        dim {
+          size: 64
+        }
+        dim {
+          size: 128
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/weights/Assign"
+  op: "Assign"
+  input: "vgg_16/conv4/conv4_1/weights"
+  input: "vgg_16/conv4/conv4_1/weights/Initializer/random_uniform"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv4/conv4_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/weights/read"
+  op: "Identity"
+  input: "vgg_16/conv4/conv4_1/weights"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv4/conv4_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/kernel/Regularizer/l2_regularizer/scale"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv4/conv4_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 9.999999747378752e-05
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/kernel/Regularizer/l2_regularizer/L2Loss"
+  op: "L2Loss"
+  input: "vgg_16/conv4/conv4_1/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv4/conv4_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/kernel/Regularizer/l2_regularizer"
+  op: "Mul"
+  input: "vgg_16/conv4/conv4_1/kernel/Regularizer/l2_regularizer/scale"
+  input: "vgg_16/conv4/conv4_1/kernel/Regularizer/l2_regularizer/L2Loss"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv4/conv4_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/biases/Initializer/Const"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv4/conv4_1/biases"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 128
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/biases"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv4/conv4_1/biases"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 128
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/biases/Assign"
+  op: "Assign"
+  input: "vgg_16/conv4/conv4_1/biases"
+  input: "vgg_16/conv4/conv4_1/biases/Initializer/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv4/conv4_1/biases"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/biases/read"
+  op: "Identity"
+  input: "vgg_16/conv4/conv4_1/biases"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv4/conv4_1/biases"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/dilation_rate"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\001\000\000\000\001\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/Conv2D"
+  op: "Conv2D"
+  input: "vgg_16/pool3/MaxPool"
+  input: "vgg_16/conv4/conv4_1/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "SAME"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "use_cudnn_on_gpu"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/BiasAdd"
+  op: "BiasAdd"
+  input: "vgg_16/conv4/conv4_1/Conv2D"
+  input: "vgg_16/conv4/conv4_1/biases/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "vgg_16/conv4/conv4_1/Relu"
+  op: "Relu"
+  input: "vgg_16/conv4/conv4_1/BiasAdd"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16/pool4/MaxPool"
+  op: "MaxPool"
+  input: "vgg_16/conv4/conv4_1/Relu"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "ksize"
+    value {
+      list {
+        i: 1
+        i: 2
+        i: 2
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "SAME"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 2
+        i: 2
+        i: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/weights/Initializer/random_uniform/shape"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv5/conv5_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\003\000\000\000\003\000\000\000\200\000\000\000\200\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/weights/Initializer/random_uniform/min"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv5/conv5_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: -0.05103103816509247
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/weights/Initializer/random_uniform/max"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv5/conv5_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.05103103816509247
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/weights/Initializer/random_uniform/RandomUniform"
+  op: "RandomUniform"
+  input: "vgg_16/conv5/conv5_1/weights/Initializer/random_uniform/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv5/conv5_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "seed"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "seed2"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/weights/Initializer/random_uniform/sub"
+  op: "Sub"
+  input: "vgg_16/conv5/conv5_1/weights/Initializer/random_uniform/max"
+  input: "vgg_16/conv5/conv5_1/weights/Initializer/random_uniform/min"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv5/conv5_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/weights/Initializer/random_uniform/mul"
+  op: "Mul"
+  input: "vgg_16/conv5/conv5_1/weights/Initializer/random_uniform/RandomUniform"
+  input: "vgg_16/conv5/conv5_1/weights/Initializer/random_uniform/sub"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv5/conv5_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/weights/Initializer/random_uniform"
+  op: "Add"
+  input: "vgg_16/conv5/conv5_1/weights/Initializer/random_uniform/mul"
+  input: "vgg_16/conv5/conv5_1/weights/Initializer/random_uniform/min"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv5/conv5_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/weights"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv5/conv5_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 3
+        }
+        dim {
+          size: 3
+        }
+        dim {
+          size: 128
+        }
+        dim {
+          size: 128
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/weights/Assign"
+  op: "Assign"
+  input: "vgg_16/conv5/conv5_1/weights"
+  input: "vgg_16/conv5/conv5_1/weights/Initializer/random_uniform"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv5/conv5_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/weights/read"
+  op: "Identity"
+  input: "vgg_16/conv5/conv5_1/weights"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv5/conv5_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/kernel/Regularizer/l2_regularizer/scale"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv5/conv5_1/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 9.999999747378752e-05
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/kernel/Regularizer/l2_regularizer/L2Loss"
+  op: "L2Loss"
+  input: "vgg_16/conv5/conv5_1/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv5/conv5_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/kernel/Regularizer/l2_regularizer"
+  op: "Mul"
+  input: "vgg_16/conv5/conv5_1/kernel/Regularizer/l2_regularizer/scale"
+  input: "vgg_16/conv5/conv5_1/kernel/Regularizer/l2_regularizer/L2Loss"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv5/conv5_1/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/biases/Initializer/Const"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv5/conv5_1/biases"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 128
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/biases"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv5/conv5_1/biases"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 128
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/biases/Assign"
+  op: "Assign"
+  input: "vgg_16/conv5/conv5_1/biases"
+  input: "vgg_16/conv5/conv5_1/biases/Initializer/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv5/conv5_1/biases"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/biases/read"
+  op: "Identity"
+  input: "vgg_16/conv5/conv5_1/biases"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/conv5/conv5_1/biases"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/dilation_rate"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\001\000\000\000\001\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/Conv2D"
+  op: "Conv2D"
+  input: "vgg_16/pool4/MaxPool"
+  input: "vgg_16/conv5/conv5_1/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "SAME"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "use_cudnn_on_gpu"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/BiasAdd"
+  op: "BiasAdd"
+  input: "vgg_16/conv5/conv5_1/Conv2D"
+  input: "vgg_16/conv5/conv5_1/biases/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "vgg_16/conv5/conv5_1/Relu"
+  op: "Relu"
+  input: "vgg_16/conv5/conv5_1/BiasAdd"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/strided_slice/stack"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/strided_slice/stack_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/strided_slice/stack_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/strided_slice"
+  op: "StridedSlice"
+  input: "Const"
+  input: "vgg_16_1/ANCHOR_default/strided_slice/stack"
+  input: "vgg_16_1/ANCHOR_default/strided_slice/stack_1"
+  input: "vgg_16_1/ANCHOR_default/strided_slice/stack_2"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "begin_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "ellipsis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "end_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "new_axis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "shrink_axis_mask"
+    value {
+      i: 1
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/truediv/y"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 16.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/truediv"
+  op: "RealDiv"
+  input: "vgg_16_1/ANCHOR_default/strided_slice"
+  input: "vgg_16_1/ANCHOR_default/truediv/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/Ceil"
+  op: "Ceil"
+  input: "vgg_16_1/ANCHOR_default/truediv"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/ToInt32"
+  op: "Cast"
+  input: "vgg_16_1/ANCHOR_default/Ceil"
+  attr {
+    key: "DstT"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "SrcT"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/strided_slice_1/stack"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/strided_slice_1/stack_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 2
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/strided_slice_1/stack_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/strided_slice_1"
+  op: "StridedSlice"
+  input: "Const"
+  input: "vgg_16_1/ANCHOR_default/strided_slice_1/stack"
+  input: "vgg_16_1/ANCHOR_default/strided_slice_1/stack_1"
+  input: "vgg_16_1/ANCHOR_default/strided_slice_1/stack_2"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "begin_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "ellipsis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "end_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "new_axis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "shrink_axis_mask"
+    value {
+      i: 1
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/truediv_1/y"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 16.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/truediv_1"
+  op: "RealDiv"
+  input: "vgg_16_1/ANCHOR_default/strided_slice_1"
+  input: "vgg_16_1/ANCHOR_default/truediv_1/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/Ceil_1"
+  op: "Ceil"
+  input: "vgg_16_1/ANCHOR_default/truediv_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/ToInt32_1"
+  op: "Cast"
+  input: "vgg_16_1/ANCHOR_default/Ceil_1"
+  attr {
+    key: "DstT"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "SrcT"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/generate_anchors/input_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 16
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/generate_anchors/input_3"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\010\000\000\000\020\000\000\000 \000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/generate_anchors/input_4"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\000\000\000?\000\000\200?\000\000\000@"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/ANCHOR_default/generate_anchors"
+  op: "PyFunc"
+  input: "vgg_16_1/ANCHOR_default/ToInt32"
+  input: "vgg_16_1/ANCHOR_default/ToInt32_1"
+  input: "vgg_16_1/ANCHOR_default/generate_anchors/input_2"
+  input: "vgg_16_1/ANCHOR_default/generate_anchors/input_3"
+  input: "vgg_16_1/ANCHOR_default/generate_anchors/input_4"
+  attr {
+    key: "Tin"
+    value {
+      list {
+        type: DT_INT32
+        type: DT_INT32
+        type: DT_INT32
+        type: DT_INT32
+        type: DT_FLOAT
+      }
+    }
+  }
+  attr {
+    key: "Tout"
+    value {
+      list {
+        type: DT_FLOAT
+        type: DT_INT32
+      }
+    }
+  }
+  attr {
+    key: "token"
+    value {
+      s: "pyfunc_0"
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_conv/3x3/weights/Initializer/random_normal/shape"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_conv/3x3/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\003\000\000\000\003\000\000\000\200\000\000\000\000\002\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_conv/3x3/weights/Initializer/random_normal/mean"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_conv/3x3/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_conv/3x3/weights/Initializer/random_normal/stddev"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_conv/3x3/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.009999999776482582
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_conv/3x3/weights/Initializer/random_normal/RandomStandardNormal"
+  op: "RandomStandardNormal"
+  input: "vgg_16/rpn_conv/3x3/weights/Initializer/random_normal/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_conv/3x3/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "seed"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "seed2"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_conv/3x3/weights/Initializer/random_normal/mul"
+  op: "Mul"
+  input: "vgg_16/rpn_conv/3x3/weights/Initializer/random_normal/RandomStandardNormal"
+  input: "vgg_16/rpn_conv/3x3/weights/Initializer/random_normal/stddev"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_conv/3x3/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_conv/3x3/weights/Initializer/random_normal"
+  op: "Add"
+  input: "vgg_16/rpn_conv/3x3/weights/Initializer/random_normal/mul"
+  input: "vgg_16/rpn_conv/3x3/weights/Initializer/random_normal/mean"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_conv/3x3/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_conv/3x3/weights"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_conv/3x3/weights"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 3
+        }
+        dim {
+          size: 3
+        }
+        dim {
+          size: 128
+        }
+        dim {
+          size: 512
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_conv/3x3/weights/Assign"
+  op: "Assign"
+  input: "vgg_16/rpn_conv/3x3/weights"
+  input: "vgg_16/rpn_conv/3x3/weights/Initializer/random_normal"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_conv/3x3/weights"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_conv/3x3/weights/read"
+  op: "Identity"
+  input: "vgg_16/rpn_conv/3x3/weights"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_conv/3x3/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_conv/3x3/kernel/Regularizer/l2_regularizer/scale"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_conv/3x3/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 9.999999747378752e-05
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_conv/3x3/kernel/Regularizer/l2_regularizer/L2Loss"
+  op: "L2Loss"
+  input: "vgg_16/rpn_conv/3x3/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_conv/3x3/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_conv/3x3/kernel/Regularizer/l2_regularizer"
+  op: "Mul"
+  input: "vgg_16_1/rpn_conv/3x3/kernel/Regularizer/l2_regularizer/scale"
+  input: "vgg_16_1/rpn_conv/3x3/kernel/Regularizer/l2_regularizer/L2Loss"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_conv/3x3/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_conv/3x3/biases/Initializer/Const"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_conv/3x3/biases"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 512
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_conv/3x3/biases"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_conv/3x3/biases"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 512
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_conv/3x3/biases/Assign"
+  op: "Assign"
+  input: "vgg_16/rpn_conv/3x3/biases"
+  input: "vgg_16/rpn_conv/3x3/biases/Initializer/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_conv/3x3/biases"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_conv/3x3/biases/read"
+  op: "Identity"
+  input: "vgg_16/rpn_conv/3x3/biases"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_conv/3x3/biases"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_conv/3x3/dilation_rate"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\001\000\000\000\001\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_conv/3x3/Conv2D"
+  op: "Conv2D"
+  input: "vgg_16/conv5/conv5_1/Relu"
+  input: "vgg_16/rpn_conv/3x3/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "SAME"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "use_cudnn_on_gpu"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_conv/3x3/BiasAdd"
+  op: "BiasAdd"
+  input: "vgg_16_1/rpn_conv/3x3/Conv2D"
+  input: "vgg_16/rpn_conv/3x3/biases/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_conv/3x3/Relu"
+  op: "Relu"
+  input: "vgg_16_1/rpn_conv/3x3/BiasAdd"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_cls_score/weights/Initializer/random_normal/shape"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_cls_score/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\001\000\000\000\001\000\000\000\000\002\000\000\022\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_cls_score/weights/Initializer/random_normal/mean"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_cls_score/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_cls_score/weights/Initializer/random_normal/stddev"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_cls_score/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.009999999776482582
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_cls_score/weights/Initializer/random_normal/RandomStandardNormal"
+  op: "RandomStandardNormal"
+  input: "vgg_16/rpn_cls_score/weights/Initializer/random_normal/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_cls_score/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "seed"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "seed2"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_cls_score/weights/Initializer/random_normal/mul"
+  op: "Mul"
+  input: "vgg_16/rpn_cls_score/weights/Initializer/random_normal/RandomStandardNormal"
+  input: "vgg_16/rpn_cls_score/weights/Initializer/random_normal/stddev"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_cls_score/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_cls_score/weights/Initializer/random_normal"
+  op: "Add"
+  input: "vgg_16/rpn_cls_score/weights/Initializer/random_normal/mul"
+  input: "vgg_16/rpn_cls_score/weights/Initializer/random_normal/mean"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_cls_score/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_cls_score/weights"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_cls_score/weights"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 1
+        }
+        dim {
+          size: 1
+        }
+        dim {
+          size: 512
+        }
+        dim {
+          size: 18
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_cls_score/weights/Assign"
+  op: "Assign"
+  input: "vgg_16/rpn_cls_score/weights"
+  input: "vgg_16/rpn_cls_score/weights/Initializer/random_normal"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_cls_score/weights"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_cls_score/weights/read"
+  op: "Identity"
+  input: "vgg_16/rpn_cls_score/weights"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_cls_score/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_score/kernel/Regularizer/l2_regularizer/scale"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_cls_score/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 9.999999747378752e-05
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_score/kernel/Regularizer/l2_regularizer/L2Loss"
+  op: "L2Loss"
+  input: "vgg_16/rpn_cls_score/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_cls_score/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_score/kernel/Regularizer/l2_regularizer"
+  op: "Mul"
+  input: "vgg_16_1/rpn_cls_score/kernel/Regularizer/l2_regularizer/scale"
+  input: "vgg_16_1/rpn_cls_score/kernel/Regularizer/l2_regularizer/L2Loss"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_cls_score/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_cls_score/biases/Initializer/Const"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_cls_score/biases"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 18
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_cls_score/biases"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_cls_score/biases"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 18
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_cls_score/biases/Assign"
+  op: "Assign"
+  input: "vgg_16/rpn_cls_score/biases"
+  input: "vgg_16/rpn_cls_score/biases/Initializer/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_cls_score/biases"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_cls_score/biases/read"
+  op: "Identity"
+  input: "vgg_16/rpn_cls_score/biases"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_cls_score/biases"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_score/dilation_rate"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\001\000\000\000\001\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_score/Conv2D"
+  op: "Conv2D"
+  input: "vgg_16_1/rpn_conv/3x3/Relu"
+  input: "vgg_16/rpn_cls_score/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "VALID"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "use_cudnn_on_gpu"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_score/BiasAdd"
+  op: "BiasAdd"
+  input: "vgg_16_1/rpn_cls_score/Conv2D"
+  input: "vgg_16/rpn_cls_score/biases/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "vgg_16_1/Shape"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\001\000\000\000&\000\000\000-\000\000\000\022\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_score_reshape/transpose/perm"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\000\000\000\000\003\000\000\000\001\000\000\000\002\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_score_reshape/transpose"
+  op: "Transpose"
+  input: "vgg_16_1/rpn_cls_score/BiasAdd"
+  input: "vgg_16_1/rpn_cls_score_reshape/transpose/perm"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tperm"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_score_reshape/strided_slice/stack"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 2
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_score_reshape/strided_slice/stack_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 3
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_score_reshape/strided_slice/stack_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_score_reshape/strided_slice"
+  op: "StridedSlice"
+  input: "vgg_16_1/Shape"
+  input: "vgg_16_1/rpn_cls_score_reshape/strided_slice/stack"
+  input: "vgg_16_1/rpn_cls_score_reshape/strided_slice/stack_1"
+  input: "vgg_16_1/rpn_cls_score_reshape/strided_slice/stack_2"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "begin_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "ellipsis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "end_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "new_axis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "shrink_axis_mask"
+    value {
+      i: 1
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_score_reshape/concat/values_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\001\000\000\000\002\000\000\000\377\377\377\377"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_score_reshape/concat/values_1"
+  op: "Pack"
+  input: "vgg_16_1/rpn_cls_score_reshape/strided_slice"
+  attr {
+    key: "N"
+    value {
+      i: 1
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "axis"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_score_reshape/concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_score_reshape/concat"
+  op: "ConcatV2"
+  input: "vgg_16_1/rpn_cls_score_reshape/concat/values_0"
+  input: "vgg_16_1/rpn_cls_score_reshape/concat/values_1"
+  input: "vgg_16_1/rpn_cls_score_reshape/concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_score_reshape/Reshape"
+  op: "Reshape"
+  input: "vgg_16_1/rpn_cls_score_reshape/transpose"
+  input: "vgg_16_1/rpn_cls_score_reshape/concat"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_score_reshape/transpose_1/perm"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\000\000\000\000\002\000\000\000\003\000\000\000\001\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_score_reshape/transpose_1"
+  op: "Transpose"
+  input: "vgg_16_1/rpn_cls_score_reshape/Reshape"
+  input: "vgg_16_1/rpn_cls_score_reshape/transpose_1/perm"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tperm"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "vgg_16_1/Shape_1"
+  op: "Shape"
+  input: "vgg_16_1/rpn_cls_score_reshape/transpose_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "vgg_16_1/strided_slice/stack"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: -1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/strided_slice/stack_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/strided_slice/stack_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/strided_slice"
+  op: "StridedSlice"
+  input: "vgg_16_1/Shape_1"
+  input: "vgg_16_1/strided_slice/stack"
+  input: "vgg_16_1/strided_slice/stack_1"
+  input: "vgg_16_1/strided_slice/stack_2"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "begin_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "ellipsis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "end_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "new_axis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "shrink_axis_mask"
+    value {
+      i: 1
+    }
+  }
+}
+node {
+  name: "vgg_16_1/Reshape/shape/0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: -1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/Reshape/shape"
+  op: "Pack"
+  input: "vgg_16_1/Reshape/shape/0"
+  input: "vgg_16_1/strided_slice"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "axis"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "vgg_16_1/Reshape"
+  op: "Reshape"
+  input: "vgg_16_1/rpn_cls_score_reshape/transpose_1"
+  input: "vgg_16_1/Reshape/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_prob_reshape"
+  op: "Softmax"
+  input: "vgg_16_1/Reshape"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/Reshape_1"
+  op: "Reshape"
+  input: "vgg_16_1/rpn_cls_prob_reshape"
+  input: "vgg_16_1/Shape_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "vgg_16_1/Shape_2"
+  op: "Shape"
+  input: "vgg_16_1/Reshape_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_prob/transpose/perm"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\000\000\000\000\003\000\000\000\001\000\000\000\002\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_prob/transpose"
+  op: "Transpose"
+  input: "vgg_16_1/Reshape_1"
+  input: "vgg_16_1/rpn_cls_prob/transpose/perm"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tperm"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_prob/strided_slice/stack"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 2
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_prob/strided_slice/stack_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 3
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_prob/strided_slice/stack_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_prob/strided_slice"
+  op: "StridedSlice"
+  input: "vgg_16_1/Shape_2"
+  input: "vgg_16_1/rpn_cls_prob/strided_slice/stack"
+  input: "vgg_16_1/rpn_cls_prob/strided_slice/stack_1"
+  input: "vgg_16_1/rpn_cls_prob/strided_slice/stack_2"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "begin_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "ellipsis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "end_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "new_axis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "shrink_axis_mask"
+    value {
+      i: 1
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_prob/concat/values_0"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 3
+          }
+        }
+        tensor_content: "\001\000\000\000\022\000\000\000\377\377\377\377"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_prob/concat/values_1"
+  op: "Pack"
+  input: "vgg_16_1/rpn_cls_prob/strided_slice"
+  attr {
+    key: "N"
+    value {
+      i: 1
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "axis"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_prob/concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_prob/concat"
+  op: "ConcatV2"
+  input: "vgg_16_1/rpn_cls_prob/concat/values_0"
+  input: "vgg_16_1/rpn_cls_prob/concat/values_1"
+  input: "vgg_16_1/rpn_cls_prob/concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_prob/Reshape"
+  op: "Reshape"
+  input: "vgg_16_1/rpn_cls_prob/transpose"
+  input: "vgg_16_1/rpn_cls_prob/concat"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_prob/transpose_1/perm"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\000\000\000\000\002\000\000\000\003\000\000\000\001\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_cls_prob/transpose_1"
+  op: "Transpose"
+  input: "vgg_16_1/rpn_cls_prob/Reshape"
+  input: "vgg_16_1/rpn_cls_prob/transpose_1/perm"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tperm"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_bbox_pred/weights/Initializer/random_normal/shape"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_bbox_pred/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\001\000\000\000\001\000\000\000\000\002\000\000$\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_bbox_pred/weights/Initializer/random_normal/mean"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_bbox_pred/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_bbox_pred/weights/Initializer/random_normal/stddev"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_bbox_pred/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.009999999776482582
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_bbox_pred/weights/Initializer/random_normal/RandomStandardNormal"
+  op: "RandomStandardNormal"
+  input: "vgg_16/rpn_bbox_pred/weights/Initializer/random_normal/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_bbox_pred/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "seed"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "seed2"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_bbox_pred/weights/Initializer/random_normal/mul"
+  op: "Mul"
+  input: "vgg_16/rpn_bbox_pred/weights/Initializer/random_normal/RandomStandardNormal"
+  input: "vgg_16/rpn_bbox_pred/weights/Initializer/random_normal/stddev"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_bbox_pred/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_bbox_pred/weights/Initializer/random_normal"
+  op: "Add"
+  input: "vgg_16/rpn_bbox_pred/weights/Initializer/random_normal/mul"
+  input: "vgg_16/rpn_bbox_pred/weights/Initializer/random_normal/mean"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_bbox_pred/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_bbox_pred/weights"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_bbox_pred/weights"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 1
+        }
+        dim {
+          size: 1
+        }
+        dim {
+          size: 512
+        }
+        dim {
+          size: 36
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_bbox_pred/weights/Assign"
+  op: "Assign"
+  input: "vgg_16/rpn_bbox_pred/weights"
+  input: "vgg_16/rpn_bbox_pred/weights/Initializer/random_normal"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_bbox_pred/weights"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_bbox_pred/weights/read"
+  op: "Identity"
+  input: "vgg_16/rpn_bbox_pred/weights"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_bbox_pred/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_bbox_pred/kernel/Regularizer/l2_regularizer/scale"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_bbox_pred/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 9.999999747378752e-05
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_bbox_pred/kernel/Regularizer/l2_regularizer/L2Loss"
+  op: "L2Loss"
+  input: "vgg_16/rpn_bbox_pred/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_bbox_pred/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_bbox_pred/kernel/Regularizer/l2_regularizer"
+  op: "Mul"
+  input: "vgg_16_1/rpn_bbox_pred/kernel/Regularizer/l2_regularizer/scale"
+  input: "vgg_16_1/rpn_bbox_pred/kernel/Regularizer/l2_regularizer/L2Loss"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_bbox_pred/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_bbox_pred/biases/Initializer/Const"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_bbox_pred/biases"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 36
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_bbox_pred/biases"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_bbox_pred/biases"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 36
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_bbox_pred/biases/Assign"
+  op: "Assign"
+  input: "vgg_16/rpn_bbox_pred/biases"
+  input: "vgg_16/rpn_bbox_pred/biases/Initializer/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_bbox_pred/biases"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/rpn_bbox_pred/biases/read"
+  op: "Identity"
+  input: "vgg_16/rpn_bbox_pred/biases"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/rpn_bbox_pred/biases"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_bbox_pred/dilation_rate"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\001\000\000\000\001\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_bbox_pred/Conv2D"
+  op: "Conv2D"
+  input: "vgg_16_1/rpn_conv/3x3/Relu"
+  input: "vgg_16/rpn_bbox_pred/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "VALID"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 1
+        i: 1
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "use_cudnn_on_gpu"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rpn_bbox_pred/BiasAdd"
+  op: "BiasAdd"
+  input: "vgg_16_1/rpn_bbox_pred/Conv2D"
+  input: "vgg_16/rpn_bbox_pred/biases/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rois/proposal/input_3"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_STRING
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_STRING
+        tensor_shape {
+        }
+        string_val: "TEST"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rois/proposal/input_4"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 16
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rois/proposal/input_6"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 9
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/rois/proposal"
+  op: "PyFunc"
+  input: "vgg_16_1/rpn_cls_prob/transpose_1"
+  input: "vgg_16_1/rpn_bbox_pred/BiasAdd"
+  input: "Const"
+  input: "vgg_16_1/rois/proposal/input_3"
+  input: "vgg_16_1/rois/proposal/input_4"
+  input: "vgg_16_1/ANCHOR_default/generate_anchors"
+  input: "vgg_16_1/rois/proposal/input_6"
+  attr {
+    key: "Tin"
+    value {
+      list {
+        type: DT_FLOAT
+        type: DT_FLOAT
+        type: DT_FLOAT
+        type: DT_STRING
+        type: DT_INT32
+        type: DT_FLOAT
+        type: DT_INT32
+      }
+    }
+  }
+  attr {
+    key: "Tout"
+    value {
+      list {
+        type: DT_FLOAT
+        type: DT_FLOAT
+      }
+    }
+  }
+  attr {
+    key: "token"
+    value {
+      s: "pyfunc_1"
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/batch_id/begin"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\000\000\000\000\000\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/batch_id/size"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\377\377\377\377\001\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/batch_id"
+  op: "Slice"
+  input: "vgg_16_1/rois/proposal"
+  input: "vgg_16_1/pool5/batch_id/begin"
+  input: "vgg_16_1/pool5/batch_id/size"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/Squeeze"
+  op: "Squeeze"
+  input: "vgg_16_1/pool5/batch_id"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "squeeze_dims"
+    value {
+      list {
+        i: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/Shape"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 4
+          }
+        }
+        tensor_content: "\001\000\000\000&\000\000\000-\000\000\000\200\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/strided_slice/stack"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/strided_slice/stack_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 2
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/strided_slice/stack_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/strided_slice"
+  op: "StridedSlice"
+  input: "vgg_16_1/pool5/Shape"
+  input: "vgg_16_1/pool5/strided_slice/stack"
+  input: "vgg_16_1/pool5/strided_slice/stack_1"
+  input: "vgg_16_1/pool5/strided_slice/stack_2"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "begin_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "ellipsis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "end_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "new_axis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "shrink_axis_mask"
+    value {
+      i: 1
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/ToFloat"
+  op: "Cast"
+  input: "vgg_16_1/pool5/strided_slice"
+  attr {
+    key: "DstT"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "SrcT"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/sub/y"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/sub"
+  op: "Sub"
+  input: "vgg_16_1/pool5/ToFloat"
+  input: "vgg_16_1/pool5/sub/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/mul/y"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 16.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/mul"
+  op: "Mul"
+  input: "vgg_16_1/pool5/sub"
+  input: "vgg_16_1/pool5/mul/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/strided_slice_1/stack"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 2
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/strided_slice_1/stack_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 3
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/strided_slice_1/stack_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/strided_slice_1"
+  op: "StridedSlice"
+  input: "vgg_16_1/pool5/Shape"
+  input: "vgg_16_1/pool5/strided_slice_1/stack"
+  input: "vgg_16_1/pool5/strided_slice_1/stack_1"
+  input: "vgg_16_1/pool5/strided_slice_1/stack_2"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "begin_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "ellipsis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "end_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "new_axis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "shrink_axis_mask"
+    value {
+      i: 1
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/ToFloat_1"
+  op: "Cast"
+  input: "vgg_16_1/pool5/strided_slice_1"
+  attr {
+    key: "DstT"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "SrcT"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/sub_1/y"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 1.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/sub_1"
+  op: "Sub"
+  input: "vgg_16_1/pool5/ToFloat_1"
+  input: "vgg_16_1/pool5/sub_1/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/mul_1/y"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 16.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/mul_1"
+  op: "Mul"
+  input: "vgg_16_1/pool5/sub_1"
+  input: "vgg_16_1/pool5/mul_1/y"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/x1/begin"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\000\000\000\000\001\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/x1/size"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\377\377\377\377\001\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/x1"
+  op: "Slice"
+  input: "vgg_16_1/rois/proposal"
+  input: "vgg_16_1/pool5/x1/begin"
+  input: "vgg_16_1/pool5/x1/size"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/truediv"
+  op: "RealDiv"
+  input: "vgg_16_1/pool5/x1"
+  input: "vgg_16_1/pool5/mul_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/y1/begin"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\000\000\000\000\002\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/y1/size"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\377\377\377\377\001\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/y1"
+  op: "Slice"
+  input: "vgg_16_1/rois/proposal"
+  input: "vgg_16_1/pool5/y1/begin"
+  input: "vgg_16_1/pool5/y1/size"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/truediv_1"
+  op: "RealDiv"
+  input: "vgg_16_1/pool5/y1"
+  input: "vgg_16_1/pool5/mul"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/x2/begin"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\000\000\000\000\003\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/x2/size"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\377\377\377\377\001\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/x2"
+  op: "Slice"
+  input: "vgg_16_1/rois/proposal"
+  input: "vgg_16_1/pool5/x2/begin"
+  input: "vgg_16_1/pool5/x2/size"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/truediv_2"
+  op: "RealDiv"
+  input: "vgg_16_1/pool5/x2"
+  input: "vgg_16_1/pool5/mul_1"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/y2/begin"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\000\000\000\000\004\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/y2/size"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\377\377\377\377\001\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/y2"
+  op: "Slice"
+  input: "vgg_16_1/rois/proposal"
+  input: "vgg_16_1/pool5/y2/begin"
+  input: "vgg_16_1/pool5/y2/size"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/truediv_3"
+  op: "RealDiv"
+  input: "vgg_16_1/pool5/y2"
+  input: "vgg_16_1/pool5/mul"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/concat"
+  op: "ConcatV2"
+  input: "vgg_16_1/pool5/truediv_1"
+  input: "vgg_16_1/pool5/truediv"
+  input: "vgg_16_1/pool5/truediv_3"
+  input: "vgg_16_1/pool5/truediv_2"
+  input: "vgg_16_1/pool5/concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 4
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/StopGradient"
+  op: "StopGradient"
+  input: "vgg_16_1/pool5/concat"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/ToInt32"
+  op: "Cast"
+  input: "vgg_16_1/pool5/Squeeze"
+  attr {
+    key: "DstT"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "SrcT"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/crops/crop_size"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\016\000\000\000\016\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_1/pool5/crops"
+  op: "CropAndResize"
+  input: "vgg_16/conv5/conv5_1/Relu"
+  input: "vgg_16_1/pool5/StopGradient"
+  input: "vgg_16_1/pool5/ToInt32"
+  input: "vgg_16_1/pool5/crops/crop_size"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "extrapolation_value"
+    value {
+      f: 0.0
+    }
+  }
+  attr {
+    key: "method"
+    value {
+      s: "bilinear"
+    }
+  }
+}
+node {
+  name: "vgg_16_1/MaxPool2D/MaxPool"
+  op: "MaxPool"
+  input: "vgg_16_1/pool5/crops"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+  attr {
+    key: "ksize"
+    value {
+      list {
+        i: 1
+        i: 2
+        i: 2
+        i: 1
+      }
+    }
+  }
+  attr {
+    key: "padding"
+    value {
+      s: "SAME"
+    }
+  }
+  attr {
+    key: "strides"
+    value {
+      list {
+        i: 1
+        i: 2
+        i: 2
+        i: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_2/flatten/flatten/Shape"
+  op: "Shape"
+  input: "vgg_16_1/MaxPool2D/MaxPool"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "out_type"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "vgg_16_2/flatten/flatten/strided_slice/stack"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_2/flatten/flatten/strided_slice/stack_1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_2/flatten/flatten/strided_slice/stack_2"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 1
+          }
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_2/flatten/flatten/strided_slice"
+  op: "StridedSlice"
+  input: "vgg_16_2/flatten/flatten/Shape"
+  input: "vgg_16_2/flatten/flatten/strided_slice/stack"
+  input: "vgg_16_2/flatten/flatten/strided_slice/stack_1"
+  input: "vgg_16_2/flatten/flatten/strided_slice/stack_2"
+  attr {
+    key: "Index"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "begin_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "ellipsis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "end_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "new_axis_mask"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "shrink_axis_mask"
+    value {
+      i: 1
+    }
+  }
+}
+node {
+  name: "vgg_16_2/flatten/flatten/Reshape/shape/1"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: -1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_2/flatten/flatten/Reshape/shape"
+  op: "Pack"
+  input: "vgg_16_2/flatten/flatten/strided_slice"
+  input: "vgg_16_2/flatten/flatten/Reshape/shape/1"
+  attr {
+    key: "N"
+    value {
+      i: 2
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "axis"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "vgg_16_2/flatten/flatten/Reshape"
+  op: "Reshape"
+  input: "vgg_16_1/MaxPool2D/MaxPool"
+  input: "vgg_16_2/flatten/flatten/Reshape/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tshape"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "vgg_16/fc6/weights/Initializer/random_uniform/shape"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc6/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\200\030\000\000\000\020\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/fc6/weights/Initializer/random_uniform/min"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc6/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: -0.024056261405348778
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/fc6/weights/Initializer/random_uniform/max"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc6/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.024056261405348778
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/fc6/weights/Initializer/random_uniform/RandomUniform"
+  op: "RandomUniform"
+  input: "vgg_16/fc6/weights/Initializer/random_uniform/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc6/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "seed"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "seed2"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "vgg_16/fc6/weights/Initializer/random_uniform/sub"
+  op: "Sub"
+  input: "vgg_16/fc6/weights/Initializer/random_uniform/max"
+  input: "vgg_16/fc6/weights/Initializer/random_uniform/min"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc6/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/fc6/weights/Initializer/random_uniform/mul"
+  op: "Mul"
+  input: "vgg_16/fc6/weights/Initializer/random_uniform/RandomUniform"
+  input: "vgg_16/fc6/weights/Initializer/random_uniform/sub"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc6/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/fc6/weights/Initializer/random_uniform"
+  op: "Add"
+  input: "vgg_16/fc6/weights/Initializer/random_uniform/mul"
+  input: "vgg_16/fc6/weights/Initializer/random_uniform/min"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc6/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/fc6/weights"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc6/weights"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 6272
+        }
+        dim {
+          size: 4096
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/fc6/weights/Assign"
+  op: "Assign"
+  input: "vgg_16/fc6/weights"
+  input: "vgg_16/fc6/weights/Initializer/random_uniform"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc6/weights"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/fc6/weights/read"
+  op: "Identity"
+  input: "vgg_16/fc6/weights"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc6/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_2/fc6/kernel/Regularizer/l2_regularizer/scale"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc6/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 9.999999747378752e-05
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_2/fc6/kernel/Regularizer/l2_regularizer/L2Loss"
+  op: "L2Loss"
+  input: "vgg_16/fc6/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc6/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_2/fc6/kernel/Regularizer/l2_regularizer"
+  op: "Mul"
+  input: "vgg_16_2/fc6/kernel/Regularizer/l2_regularizer/scale"
+  input: "vgg_16_2/fc6/kernel/Regularizer/l2_regularizer/L2Loss"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc6/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/fc6/biases/Initializer/Const"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc6/biases"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 4096
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/fc6/biases"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc6/biases"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 4096
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/fc6/biases/Assign"
+  op: "Assign"
+  input: "vgg_16/fc6/biases"
+  input: "vgg_16/fc6/biases/Initializer/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc6/biases"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/fc6/biases/read"
+  op: "Identity"
+  input: "vgg_16/fc6/biases"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc6/biases"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_2/fc6/MatMul"
+  op: "MatMul"
+  input: "vgg_16_2/flatten/flatten/Reshape"
+  input: "vgg_16/fc6/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "vgg_16_2/fc6/BiasAdd"
+  op: "BiasAdd"
+  input: "vgg_16_2/fc6/MatMul"
+  input: "vgg_16/fc6/biases/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "vgg_16_2/fc6/Relu"
+  op: "Relu"
+  input: "vgg_16_2/fc6/BiasAdd"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16/fc7/weights/Initializer/random_uniform/shape"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc7/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\000\020\000\000\000\020\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/fc7/weights/Initializer/random_uniform/min"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc7/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: -0.027063293382525444
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/fc7/weights/Initializer/random_uniform/max"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc7/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.027063293382525444
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/fc7/weights/Initializer/random_uniform/RandomUniform"
+  op: "RandomUniform"
+  input: "vgg_16/fc7/weights/Initializer/random_uniform/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc7/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "seed"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "seed2"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "vgg_16/fc7/weights/Initializer/random_uniform/sub"
+  op: "Sub"
+  input: "vgg_16/fc7/weights/Initializer/random_uniform/max"
+  input: "vgg_16/fc7/weights/Initializer/random_uniform/min"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc7/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/fc7/weights/Initializer/random_uniform/mul"
+  op: "Mul"
+  input: "vgg_16/fc7/weights/Initializer/random_uniform/RandomUniform"
+  input: "vgg_16/fc7/weights/Initializer/random_uniform/sub"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc7/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/fc7/weights/Initializer/random_uniform"
+  op: "Add"
+  input: "vgg_16/fc7/weights/Initializer/random_uniform/mul"
+  input: "vgg_16/fc7/weights/Initializer/random_uniform/min"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc7/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/fc7/weights"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc7/weights"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 4096
+        }
+        dim {
+          size: 4096
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/fc7/weights/Assign"
+  op: "Assign"
+  input: "vgg_16/fc7/weights"
+  input: "vgg_16/fc7/weights/Initializer/random_uniform"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc7/weights"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/fc7/weights/read"
+  op: "Identity"
+  input: "vgg_16/fc7/weights"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc7/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_2/fc7/kernel/Regularizer/l2_regularizer/scale"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc7/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 9.999999747378752e-05
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_2/fc7/kernel/Regularizer/l2_regularizer/L2Loss"
+  op: "L2Loss"
+  input: "vgg_16/fc7/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc7/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_2/fc7/kernel/Regularizer/l2_regularizer"
+  op: "Mul"
+  input: "vgg_16_2/fc7/kernel/Regularizer/l2_regularizer/scale"
+  input: "vgg_16_2/fc7/kernel/Regularizer/l2_regularizer/L2Loss"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc7/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/fc7/biases/Initializer/Const"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc7/biases"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 4096
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/fc7/biases"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc7/biases"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 4096
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/fc7/biases/Assign"
+  op: "Assign"
+  input: "vgg_16/fc7/biases"
+  input: "vgg_16/fc7/biases/Initializer/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc7/biases"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/fc7/biases/read"
+  op: "Identity"
+  input: "vgg_16/fc7/biases"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/fc7/biases"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_2/fc7/MatMul"
+  op: "MatMul"
+  input: "vgg_16_2/fc6/Relu"
+  input: "vgg_16/fc7/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "vgg_16_2/fc7/BiasAdd"
+  op: "BiasAdd"
+  input: "vgg_16_2/fc7/MatMul"
+  input: "vgg_16/fc7/biases/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "vgg_16_2/fc7/Relu"
+  op: "Relu"
+  input: "vgg_16_2/fc7/BiasAdd"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16/cls_score/weights/Initializer/random_normal/shape"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/cls_score/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\000\020\000\000\010\000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/cls_score/weights/Initializer/random_normal/mean"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/cls_score/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/cls_score/weights/Initializer/random_normal/stddev"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/cls_score/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.009999999776482582
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/cls_score/weights/Initializer/random_normal/RandomStandardNormal"
+  op: "RandomStandardNormal"
+  input: "vgg_16/cls_score/weights/Initializer/random_normal/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/cls_score/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "seed"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "seed2"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "vgg_16/cls_score/weights/Initializer/random_normal/mul"
+  op: "Mul"
+  input: "vgg_16/cls_score/weights/Initializer/random_normal/RandomStandardNormal"
+  input: "vgg_16/cls_score/weights/Initializer/random_normal/stddev"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/cls_score/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/cls_score/weights/Initializer/random_normal"
+  op: "Add"
+  input: "vgg_16/cls_score/weights/Initializer/random_normal/mul"
+  input: "vgg_16/cls_score/weights/Initializer/random_normal/mean"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/cls_score/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/cls_score/weights"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/cls_score/weights"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 4096
+        }
+        dim {
+          size: 8
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/cls_score/weights/Assign"
+  op: "Assign"
+  input: "vgg_16/cls_score/weights"
+  input: "vgg_16/cls_score/weights/Initializer/random_normal"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/cls_score/weights"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/cls_score/weights/read"
+  op: "Identity"
+  input: "vgg_16/cls_score/weights"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/cls_score/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_3/cls_score/kernel/Regularizer/l2_regularizer/scale"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/cls_score/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 9.999999747378752e-05
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_3/cls_score/kernel/Regularizer/l2_regularizer/L2Loss"
+  op: "L2Loss"
+  input: "vgg_16/cls_score/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/cls_score/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_3/cls_score/kernel/Regularizer/l2_regularizer"
+  op: "Mul"
+  input: "vgg_16_3/cls_score/kernel/Regularizer/l2_regularizer/scale"
+  input: "vgg_16_3/cls_score/kernel/Regularizer/l2_regularizer/L2Loss"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/cls_score/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/cls_score/biases/Initializer/Const"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/cls_score/biases"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 8
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/cls_score/biases"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/cls_score/biases"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 8
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/cls_score/biases/Assign"
+  op: "Assign"
+  input: "vgg_16/cls_score/biases"
+  input: "vgg_16/cls_score/biases/Initializer/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/cls_score/biases"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/cls_score/biases/read"
+  op: "Identity"
+  input: "vgg_16/cls_score/biases"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/cls_score/biases"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_3/cls_score/MatMul"
+  op: "MatMul"
+  input: "vgg_16_2/fc7/Relu"
+  input: "vgg_16/cls_score/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "vgg_16_3/cls_score/BiasAdd"
+  op: "BiasAdd"
+  input: "vgg_16_3/cls_score/MatMul"
+  input: "vgg_16/cls_score/biases/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "vgg_16_3/cls_prob"
+  op: "Softmax"
+  input: "vgg_16_3/cls_score/BiasAdd"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+}
+node {
+  name: "vgg_16_3/cls_pred/dimension"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_3/cls_pred"
+  op: "ArgMax"
+  input: "vgg_16_3/cls_score/BiasAdd"
+  input: "vgg_16_3/cls_pred/dimension"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "output_type"
+    value {
+      type: DT_INT64
+    }
+  }
+}
+node {
+  name: "vgg_16/bbox_pred/weights/Initializer/random_normal/shape"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/bbox_pred/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+          dim {
+            size: 2
+          }
+        }
+        tensor_content: "\000\020\000\000 \000\000\000"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/bbox_pred/weights/Initializer/random_normal/mean"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/bbox_pred/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/bbox_pred/weights/Initializer/random_normal/stddev"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/bbox_pred/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 0.0010000000474974513
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/bbox_pred/weights/Initializer/random_normal/RandomStandardNormal"
+  op: "RandomStandardNormal"
+  input: "vgg_16/bbox_pred/weights/Initializer/random_normal/shape"
+  attr {
+    key: "T"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/bbox_pred/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "seed"
+    value {
+      i: 0
+    }
+  }
+  attr {
+    key: "seed2"
+    value {
+      i: 0
+    }
+  }
+}
+node {
+  name: "vgg_16/bbox_pred/weights/Initializer/random_normal/mul"
+  op: "Mul"
+  input: "vgg_16/bbox_pred/weights/Initializer/random_normal/RandomStandardNormal"
+  input: "vgg_16/bbox_pred/weights/Initializer/random_normal/stddev"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/bbox_pred/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/bbox_pred/weights/Initializer/random_normal"
+  op: "Add"
+  input: "vgg_16/bbox_pred/weights/Initializer/random_normal/mul"
+  input: "vgg_16/bbox_pred/weights/Initializer/random_normal/mean"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/bbox_pred/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/bbox_pred/weights"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/bbox_pred/weights"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 4096
+        }
+        dim {
+          size: 32
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/bbox_pred/weights/Assign"
+  op: "Assign"
+  input: "vgg_16/bbox_pred/weights"
+  input: "vgg_16/bbox_pred/weights/Initializer/random_normal"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/bbox_pred/weights"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/bbox_pred/weights/read"
+  op: "Identity"
+  input: "vgg_16/bbox_pred/weights"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/bbox_pred/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_3/bbox_pred/kernel/Regularizer/l2_regularizer/scale"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/bbox_pred/weights"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+        }
+        float_val: 9.999999747378752e-05
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_3/bbox_pred/kernel/Regularizer/l2_regularizer/L2Loss"
+  op: "L2Loss"
+  input: "vgg_16/bbox_pred/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/bbox_pred/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_3/bbox_pred/kernel/Regularizer/l2_regularizer"
+  op: "Mul"
+  input: "vgg_16_3/bbox_pred/kernel/Regularizer/l2_regularizer/scale"
+  input: "vgg_16_3/bbox_pred/kernel/Regularizer/l2_regularizer/L2Loss"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/bbox_pred/weights"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/bbox_pred/biases/Initializer/Const"
+  op: "Const"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/bbox_pred/biases"
+      }
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_FLOAT
+        tensor_shape {
+          dim {
+            size: 32
+          }
+        }
+        float_val: 0.0
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16/bbox_pred/biases"
+  op: "VariableV2"
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/bbox_pred/biases"
+      }
+    }
+  }
+  attr {
+    key: "container"
+    value {
+      s: ""
+    }
+  }
+  attr {
+    key: "dtype"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "shape"
+    value {
+      shape {
+        dim {
+          size: 32
+        }
+      }
+    }
+  }
+  attr {
+    key: "shared_name"
+    value {
+      s: ""
+    }
+  }
+}
+node {
+  name: "vgg_16/bbox_pred/biases/Assign"
+  op: "Assign"
+  input: "vgg_16/bbox_pred/biases"
+  input: "vgg_16/bbox_pred/biases/Initializer/Const"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/bbox_pred/biases"
+      }
+    }
+  }
+  attr {
+    key: "use_locking"
+    value {
+      b: true
+    }
+  }
+  attr {
+    key: "validate_shape"
+    value {
+      b: true
+    }
+  }
+}
+node {
+  name: "vgg_16/bbox_pred/biases/read"
+  op: "Identity"
+  input: "vgg_16/bbox_pred/biases"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "_class"
+    value {
+      list {
+        s: "loc:@vgg_16/bbox_pred/biases"
+      }
+    }
+  }
+}
+node {
+  name: "vgg_16_3/bbox_pred/MatMul"
+  op: "MatMul"
+  input: "vgg_16_2/fc7/Relu"
+  input: "vgg_16/bbox_pred/weights/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "transpose_a"
+    value {
+      b: false
+    }
+  }
+  attr {
+    key: "transpose_b"
+    value {
+      b: false
+    }
+  }
+}
+node {
+  name: "vgg_16_3/bbox_pred/BiasAdd"
+  op: "BiasAdd"
+  input: "vgg_16_3/bbox_pred/MatMul"
+  input: "vgg_16/bbox_pred/biases/read"
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "data_format"
+    value {
+      s: "NHWC"
+    }
+  }
+}
+node {
+  name: "concat/concat/axis"
+  op: "Const"
+  attr {
+    key: "dtype"
+    value {
+      type: DT_INT32
+    }
+  }
+  attr {
+    key: "value"
+    value {
+      tensor {
+        dtype: DT_INT32
+        tensor_shape {
+        }
+        int_val: 1
+      }
+    }
+  }
+}
+node {
+  name: "concat/concat"
+  op: "ConcatV2"
+  input: "vgg_16_3/cls_score/BiasAdd"
+  input: "vgg_16_3/cls_prob"
+  input: "vgg_16_3/bbox_pred/BiasAdd"
+  input: "vgg_16_1/rois/proposal"
+  input: "concat/concat/axis"
+  attr {
+    key: "N"
+    value {
+      i: 4
+    }
+  }
+  attr {
+    key: "T"
+    value {
+      type: DT_FLOAT
+    }
+  }
+  attr {
+    key: "Tidx"
+    value {
+      type: DT_INT32
+    }
+  }
+}
+node {
+  name: "init"
+  op: "NoOp"
+  input: "^vgg_16/conv1/conv1_1/weights/Assign"
+  input: "^vgg_16/conv1/conv1_1/biases/Assign"
+  input: "^vgg_16/conv2/conv2_1/weights/Assign"
+  input: "^vgg_16/conv2/conv2_1/biases/Assign"
+  input: "^vgg_16/conv3/conv3_1/weights/Assign"
+  input: "^vgg_16/conv3/conv3_1/biases/Assign"
+  input: "^vgg_16/conv4/conv4_1/weights/Assign"
+  input: "^vgg_16/conv4/conv4_1/biases/Assign"
+  input: "^vgg_16/conv5/conv5_1/weights/Assign"
+  input: "^vgg_16/conv5/conv5_1/biases/Assign"
+  input: "^vgg_16/rpn_conv/3x3/weights/Assign"
+  input: "^vgg_16/rpn_conv/3x3/biases/Assign"
+  input: "^vgg_16/rpn_cls_score/weights/Assign"
+  input: "^vgg_16/rpn_cls_score/biases/Assign"
+  input: "^vgg_16/rpn_bbox_pred/weights/Assign"
+  input: "^vgg_16/rpn_bbox_pred/biases/Assign"
+  input: "^vgg_16/fc6/weights/Assign"
+  input: "^vgg_16/fc6/biases/Assign"
+  input: "^vgg_16/fc7/weights/Assign"
+  input: "^vgg_16/fc7/biases/Assign"
+  input: "^vgg_16/cls_score/weights/Assign"
+  input: "^vgg_16/cls_score/biases/Assign"
+  input: "^vgg_16/bbox_pred/weights/Assign"
+  input: "^vgg_16/bbox_pred/biases/Assign"
+}
+versions {
+  producer: 24
+}
