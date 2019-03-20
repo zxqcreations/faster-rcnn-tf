@@ -36,7 +36,6 @@ class Network(object):
     self._train_summaries = []
     self._event_summaries = {}
     self._variables_to_fix = {}
-    self.con = None
 
   def _add_gt_image(self):
     # add back mean
@@ -386,9 +385,8 @@ class Network(object):
 
   def create_architecture(self, mode, num_classes, tag=None,
                           anchor_scales=(8, 16, 32), anchor_ratios=(0.5, 1, 2)):
-    self._image = tf.placeholder(tf.float32, shape=[1, None, None, 3], name='input')
+    self._image = tf.placeholder(tf.float32, shape=[1, None, None, 3])
     self._im_info = tf.placeholder(tf.float32, shape=[3])
-    #self._im_info = tf.constant([600, 712, 2.0833333], dtype=tf.float32)
     self._gt_boxes = tf.placeholder(tf.float32, shape=[None, 5])
     self._tag = tag
 
@@ -450,10 +448,8 @@ class Network(object):
 
       self._summary_op = tf.summary.merge_all()
       self._summary_op_val = tf.summary.merge(val_summaries)
-    with tf.variable_scope('concat') as scope:
-      self.con = tf.concat([self._predictions["cls_score"], self._predictions['cls_prob'], self._predictions['bbox_pred'], self._predictions['rois']], 1, name='concat')
+
     layers_to_output.update(self._predictions)
-    
 
     return layers_to_output
 
@@ -472,14 +468,13 @@ class Network(object):
 
   # only useful during testing mode
   def test_image(self, sess, image, im_info):
-    feed_dict = {self._image: image, 
+    feed_dict = {self._image: image,
                  self._im_info: im_info}
 
-    cls_score, cls_prob, bbox_pred, rois, con = sess.run([self._predictions["cls_score"],
+    cls_score, cls_prob, bbox_pred, rois = sess.run([self._predictions["cls_score"],
                                                      self._predictions['cls_prob'],
                                                      self._predictions['bbox_pred'],
-                                                     self._predictions['rois'], 
-                                                     self.con],
+                                                     self._predictions['rois']],
                                                     feed_dict=feed_dict)
     #print(im_info)
     #print('cls_score:', type(self._predictions["cls_score"]), cls_score.shape)
@@ -507,7 +502,6 @@ class Network(object):
                                                                         self._losses['total_loss'],
                                                                         train_op],
                                                                        feed_dict=feed_dict)
-    
     return rpn_loss_cls, rpn_loss_box, loss_cls, loss_box, loss
 
   def train_step_with_summary(self, sess, blobs, train_op):

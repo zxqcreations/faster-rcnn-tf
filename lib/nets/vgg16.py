@@ -84,7 +84,6 @@ class vgg16(Network):
       with tf.device("/cpu:0"):
         # fix the vgg16 issue from conv weights to fc weights
         # fix RGB to BGR
-        #fc6_conv = tf.get_variable("fc6_conv", [7, 7, 512, 4096], trainable=False)
         fc6_conv = tf.get_variable("fc6_conv", [7, 7, 512, 4096], trainable=False)
         fc7_conv = tf.get_variable("fc7_conv", [1, 1, 4096, 4096], trainable=False)
         conv1_rgb = tf.get_variable("conv1_rgb", [3, 3, 3, 64], trainable=False)

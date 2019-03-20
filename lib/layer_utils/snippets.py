@@ -35,8 +35,7 @@ def generate_anchors_pre_tf(height, width, feat_stride=16, anchor_scales=(8, 16,
   shift_x, shift_y = tf.meshgrid(shift_x, shift_y)
   sx = tf.reshape(shift_x, shape=(-1,))
   sy = tf.reshape(shift_y, shape=(-1,))
-  
-  shifts = tf.transpose(tf.concat([sx, sy, sx, sy],0))
+  shifts = tf.transpose(tf.stack([sx, sy, sx, sy]))
   K = tf.multiply(width, height)
   shifts = tf.transpose(tf.reshape(shifts, shape=[1, K, 4]), perm=(1, 0, 2))
 

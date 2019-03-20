@@ -23,7 +23,6 @@ import time
 
 import tensorflow as tf
 from tensorflow.python import pywrap_tensorflow
-from tensorflow.python.platform import gfile
 
 class SolverWrapper(object):
   """
@@ -309,8 +308,6 @@ class SolverWrapper(object):
         ss_path, np_path = self.snapshot(sess, iter)
         np_paths.append(np_path)
         ss_paths.append(ss_path)
-        #with gfile.GFile('vgg16_faster_rcnn_'+str(iter)+'.pb', 'wb') as f:
-        #    f.write(tf.get_default_graph().as_graph_def().SerializeToString())
 
         # Remove the old snapshots if there are too many
         if len(np_paths) > cfg.TRAIN.SNAPSHOT_KEPT:
